@@ -323,13 +323,20 @@ footer strong { color: var(--text); }
     min-height: 100svh;
     align-content: center;
     padding: 38px 18px 54px;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "visual" "copy";
-    gap: 22px;
+    grid-template-columns: minmax(0, 1fr) clamp(88px, 24vw, 108px);
+    grid-template-rows: auto auto auto auto auto auto;
+    column-gap: 14px;
+    row-gap: 16px;
   }
-  .hero-copy { grid-area: copy; min-width: 0; }
-  .hero h1 { font-size: clamp(2.8rem, 11vw, 3.55rem); overflow-wrap: anywhere; }
-  .hero-visual { grid-area: visual; width: clamp(88px, 24vw, 108px); justify-self: end; margin: 0 7px 0 0; }
+  .hero-copy { display: contents; }
+  .hero .eyebrow, .hero .role-tag, .hero .tagline, .hero .hero-lead, .hero .hero-btns { grid-column: 1 / -1; }
+  .hero .eyebrow { grid-row: 1; }
+  .hero .role-tag { grid-row: 2; }
+  .hero h1 { grid-column: 1; grid-row: 3; align-self: center; min-width: 0; font-size: clamp(2.8rem, 11vw, 3.55rem); overflow-wrap: anywhere; }
+  .hero .tagline { grid-row: 4; }
+  .hero .hero-lead { grid-row: 5; }
+  .hero .hero-btns { grid-row: 6; }
+  .hero-visual { grid-column: 2; grid-row: 3; align-self: center; width: clamp(88px, 24vw, 108px); justify-self: end; margin: 0 6px 0 0; }
   .hero-visual::before { inset: -6px; border-radius: 50%; }
   .hero-avatar { aspect-ratio: 1; border-radius: 50%; }
   .hero-avatar::after { background: linear-gradient(180deg, transparent 55%, rgba(8,8,8,.17)); }
@@ -380,7 +387,7 @@ footer strong { color: var(--text); }
   .floating-nav { gap: 1px; padding: 5px; }
   .floating-nav-item { width: 37px; height: 37px; flex-basis: 37px; font-size: .95rem; }
   .nav-separator { margin: 0 1px; }
-  .hero { width: min(100% - 28px, var(--max-width)); padding-right: 14px; padding-left: 14px; gap: 19px; }
+  .hero { width: min(100% - 28px, var(--max-width)); padding-right: 14px; padding-left: 14px; column-gap: 12px; row-gap: 14px; }
   .hero h1 { font-size: clamp(2.65rem, 11.8vw, 3rem); }
   .hero-btns { display: grid; grid-template-columns: minmax(0, 1fr); }
   .hero-btns .btn { width: 100%; }
