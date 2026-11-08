@@ -168,6 +168,7 @@ const projects = [
     {
         name: 'VÉRON Fashion Store',
         wordmark: 'VÉRON',
+        image: 'assets/project-previews/veron.webp',
         category: 'E-commerce',
         description: 'A production-oriented fashion storefront with searchable products, customer accounts, cart, Cash on Delivery checkout, and admin tools.',
         technologies: ['Next.js', 'React', 'TypeScript', 'PostgreSQL', 'Prisma'],
@@ -177,6 +178,7 @@ const projects = [
     {
         name: 'E-Commerce Platform',
         wordmark: 'E-COMMERCE',
+        image: 'assets/project-previews/ecommerce.webp',
         category: 'E-commerce · Full stack',
         description: 'Full-stack online store with a product catalog, cart, payments and an admin dashboard.',
         technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
@@ -186,6 +188,7 @@ const projects = [
     {
         name: 'Restaurant Website',
         wordmark: 'RESTAURANT',
+        image: 'https://images.unsplash.com/photo-1765021097487-6da56c1ce412?auto=format&fit=crop&w=1600&q=80',
         category: 'Restaurant · Web',
         description: 'Responsive restaurant website showcasing the food menu and team members.',
         technologies: ['Socket.io', 'React', 'Express', 'Redis'],
@@ -195,6 +198,7 @@ const projects = [
     {
         name: 'Task Manager App',
         wordmark: 'TASK MANAGER',
+        image: 'assets/project-previews/task-manager.webp',
         category: 'Productivity · Web app',
         description: 'Kanban-style productivity app with drag-and-drop, deadlines, collaboration and reminders.',
         technologies: ['Vue.js', 'Firebase', 'Pinia'],
@@ -204,6 +208,7 @@ const projects = [
     {
         name: 'CyberWeb',
         wordmark: 'CYBERWEB',
+        image: 'assets/project-previews/cyberweb.webp',
         category: 'Portfolio · Frontend',
         description: 'Cyber-themed portfolio design built to showcase front-end skills.',
         technologies: ['JavaScript', 'HTML', 'CSS'],
@@ -224,6 +229,7 @@ const projectCount = document.getElementById('projectCount');
 const previewIndex = document.getElementById('previewIndex');
 const previewWordmark = document.getElementById('previewWordmark');
 const previewCaption = document.getElementById('previewCaption');
+const previewImage = document.getElementById('previewImage');
 const projectTabButtons = [];
 
 projects.forEach((project, index) => {
@@ -294,6 +300,7 @@ function selectProject(index, moveFocus = false) {
         previewIndex.textContent = `${number} / ${total}`;
         previewWordmark.textContent = project.wordmark;
         previewCaption.textContent = project.category;
+        previewImage.src = project.image;
         projectExplore.href = project.live;
         projectRepository.href = project.repository;
         projectPanel.classList.remove('is-switching');

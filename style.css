@@ -256,11 +256,13 @@ section:not(.hero) { padding: 96px 0; border-top: 1px solid var(--line); }
 .project-tab:hover .project-tab-arrow, .project-tab[aria-selected="true"] .project-tab-arrow { opacity: 1; transform: translateX(0); }
 .project-panel { min-width: 0; outline: 0; }
 .project-preview { position: relative; min-height: 280px; aspect-ratio: 1.65; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); background: var(--surface); transition: opacity .22s ease, transform .22s ease; }
-.project-preview::before { position: absolute; inset: 16px; border: 1px solid var(--line); content: ''; pointer-events: none; }
-.preview-index, .preview-caption { position: absolute; z-index: 1; color: var(--muted); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+.project-preview > img { position: absolute; z-index: 0; inset: -7px; width: calc(100% + 14px); height: calc(100% + 14px); object-fit: cover; filter: blur(4px) brightness(.58); transform: scale(1.015); }
+.project-preview::before { position: absolute; z-index: 2; inset: 16px; border: 1px solid rgba(255,255,255,.18); content: ''; pointer-events: none; }
+.project-preview::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(110deg, rgba(0,0,0,.38), rgba(0,0,0,.08) 72%, rgba(0,0,0,.24)); content: ''; pointer-events: none; }
+.preview-index, .preview-caption { position: absolute; z-index: 3; color: var(--muted); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 .preview-index { top: 30px; left: 32px; font-variant-numeric: tabular-nums; }
 .preview-caption { right: 32px; bottom: 30px; left: 32px; }
-.preview-wordmark { max-width: calc(100% - 70px); color: var(--text); font: 800 clamp(2.4rem, 6vw, 5.4rem)/.95 'Manrope', sans-serif; letter-spacing: -.085em; text-align: center; overflow-wrap: anywhere; }
+.preview-wordmark { position: relative; z-index: 3; max-width: calc(100% - 70px); color: var(--text); font: 800 clamp(2.2rem, 5vw, 4.5rem)/.95 'Manrope', sans-serif; letter-spacing: -.085em; text-align: center; text-shadow: 0 2px 24px rgba(0,0,0,.6); overflow-wrap: anywhere; }
 .project-detail { padding-top: 26px; transition: opacity .22s ease, transform .22s ease; }
 .project-panel.is-switching .project-preview, .project-panel.is-switching .project-detail { opacity: .25; transform: translateY(5px); }
 .project-detail-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
