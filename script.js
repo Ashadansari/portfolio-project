@@ -193,7 +193,7 @@ const projects = [
         description: 'Responsive restaurant website showcasing the food menu and team members.',
         technologies: ['Socket.io', 'React', 'Express', 'Redis'],
         repository: 'https://github.com/Ashadansari/Restaurant-website',
-        live: 'https://restaurant-website-dud7mj7j4-ashadansaris-projects.vercel.app/'
+        live: 'https://restaurant-eb.netlify.app/'
     },
     {
         name: 'Task Manager App',
