@@ -232,9 +232,9 @@
           <p>Have a project in mind or just want to say hi? My inbox is always open. I'll get back to you within 24
             hours.</p>
           <div class="contact-methods">
-            <a href="mailto:ashhadshamim2@email.com" class="contact-method"><i class="fa-solid fa-envelope"></i>
+            <a href="mailto:ashhadshamim2@gmail.com" class="contact-method"><i class="fa-solid fa-envelope"></i>
               <div>
-                <div style="font-size:.9rem">Email</div><span>ashhadshamim2@email.com</span>
+                <div style="font-size:.9rem">Email</div><span>ashhadshamim2@gmail.com</span>
               </div>
             </a>
             <a href="https://www.linkedin.com/in/ashhad-shamim/" class="contact-method"><i
@@ -260,21 +260,21 @@
 
         <div class="contact-form">
           <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
-            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+            <div class="form-group"><label>First Name</label><input type="text" id="firstName" placeholder="John"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" id="lastName" placeholder="Doe"></div>
           </div>
-          <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="senderEmail" placeholder="john@example.com"></div>
           <div class="form-group"><label>Subject</label>
-            <select>
+            <select id="subject">
               <option>Project Inquiry</option>
               <option>Freelance Work</option>
               <option>Job Opportunity</option>
               <option>Just Saying Hi</option>
             </select>
           </div>
-          <div class="form-group"><label>Message</label><textarea placeholder="Write about the subject..."></textarea>
+          <div class="form-group"><label>Message</label><textarea id="message" placeholder="Write about the subject..."></textarea>
           </div>
-          <button class="btn btn-primary" style="width:100%" onclick="submitForm()">
+          <button class="btn btn-primary" style="width:100%" type="button" onclick="submitForm(this)">
             <i class="fa-solid fa-paper-plane" style="margin-right:.5rem"></i>Send Message
           </button>
           <div class="form-status" id="formStatus">✓ Message sent! I'll get back to you soon.</div>
