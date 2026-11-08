@@ -77,7 +77,7 @@ hero.addEventListener('pointerleave', () => {
 // Data and tab behavior for the Skills section.
 const expertise = [
     { name: 'Frontend Development', skills: ['HTML5', 'CSS3', 'JavaScript', 'React'] },
-    { name: 'Backend Development', skills: ['Python', 'Django', 'SQL', 'MongoDB'] },
+    { name: 'Backend Development', skills: ['Python', 'Django', 'SQL', 'PostgreSQL'] },
     { name: 'Development Tools', skills: ['Git', 'GitHub', 'Docker', 'Packet Tracer'] },
     { name: 'Networking', skills: ['IPv4 Addressing', 'Subnetting', 'CIDR', 'TCP', 'UDP', 'DNS', 'DHCP', 'ARP', 'ICMP', 'NAT', 'LAN', 'WAN', 'WLAN', 'Ethernet'] },
     { name: 'Cybersecurity', skills: ['Wireshark', 'Metasploit', 'Burp Suite', 'PortSwigger', 'TryHackMe'] }
