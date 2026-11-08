@@ -321,8 +321,8 @@ footer strong { color: var(--text); }
   .nav-separator { margin: 0 2px; }
   .hero {
     min-height: 100svh;
-    align-content: center;
-    padding: 38px 18px 54px;
+    align-content: start;
+    padding: 22px 18px 54px;
     grid-template-columns: minmax(0, 1fr) clamp(88px, 24vw, 108px);
     grid-template-rows: auto auto auto auto auto auto;
     column-gap: 14px;
