@@ -15,19 +15,16 @@
 
 <body>
 
-  <nav aria-label="Main navigation">
-    <div class="nav-inner">
-      <a class="logo" href="#home" aria-label="Ashhad Shamim, home">&lt;<span>A</span>shhad Shamim /&gt;</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">
-        <i class="fa-solid fa-sun" aria-hidden="true"></i>
-      </button>
-    </div>
+  <nav class="floating-nav" aria-label="Primary navigation">
+    <a class="floating-nav-item" href="#home" aria-label="Home" data-tooltip="Home" aria-current="location"><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+    <a class="floating-nav-item" href="#about" aria-label="About" data-tooltip="About"><i class="fa-solid fa-user" aria-hidden="true"></i></a>
+    <a class="floating-nav-item" href="#projects" aria-label="Projects" data-tooltip="Projects"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></a>
+    <a class="floating-nav-item" href="#skills" aria-label="Skills" data-tooltip="Skills"><i class="fa-solid fa-code" aria-hidden="true"></i></a>
+    <span class="nav-separator" aria-hidden="true"></span>
+    <a class="floating-nav-item" href="https://github.com/Ashadansari" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-tooltip="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+    <button class="floating-nav-item theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch to light theme" data-tooltip="Theme">
+      <i class="fa-solid fa-sun" aria-hidden="true"></i>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -45,7 +42,7 @@
     </div>
     <div class="hero-visual">
       <div class="hero-avatar">
-        <img src="ashad.png" alt="Portrait of Ashhad Shamim">
+        <img src="ashhad-profile.png" alt="Portrait of Ashhad Shamim">
         <div class="hero-caption"><strong>Ashhad Shamim</strong>Frontend developer building for the web</div>
       </div>
     </div>
@@ -93,21 +90,19 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="container">
-      <div class="section-label"><span>Capabilities</span></div>
-      <div class="section-intro"><h2>Tools I work with</h2><p>A practical toolkit for building thoughtful interfaces and reliable web experiences.</p></div>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3><i class="fa-solid fa-code"></i> Frontend</h3>
-          <div class="skill-chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">React</span></div>
-        </div>
-        <div class="skill-category">
-          <h3><i class="fa-solid fa-server"></i> Backend</h3>
-          <div class="skill-chips"><span class="chip">Python</span><span class="chip">Django</span><span class="chip">SQL</span><span class="chip">MongoDB</span></div>
-        </div>
-        <div class="skill-category">
-          <h3><i class="fa-solid fa-wrench"></i> Tools</h3>
-          <div class="skill-chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Docker</span></div>
-        </div>
+      <div class="section-label"><span>Capabilities / Expertise</span></div>
+      <div class="section-intro"><h2>Technical Expertise</h2><p>Technologies, tools and technical concepts behind my engineering work.</p></div>
+      <div class="skills-browser">
+        <div class="skill-switcher" id="skillTabs" role="tablist" aria-label="Choose an expertise category" aria-orientation="horizontal"></div>
+        <article class="skill-panel" id="skillPanel" role="tabpanel" tabindex="0" aria-live="polite" aria-labelledby="skill-tab-0">
+          <div class="skill-panel-heading">
+            <span class="skill-panel-index" id="skillPanelIndex">01 / 05</span>
+            <h3 id="skillPanelTitle">Frontend Development</h3>
+          </div>
+          <ul class="skill-panel-list" id="selectedSkills" aria-label="Frontend Development skills">
+            <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -117,79 +112,35 @@
     <div class="container">
       <div class="section-label"><span>Selected Work</span></div>
       <div class="section-intro"><h2>Projects built with purpose</h2><p>A selection of web applications and interfaces exploring full-stack development, productivity and visual design.</p></div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-thumb"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></div>
-          <div class="project-body">
-            <h3>VÉRON Fashion Store</h3>
-            <p>A production-oriented fashion storefront with searchable products, customer accounts, cart, Cash on Delivery checkout, and admin tools.</p>
-            <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span></div>
-            <div class="project-links">
-              <a href="https://github.com/Ashadansari/veron" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
-              <a href="https://veron-fashion.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live site</a>
+      <div class="project-showcase">
+        <div class="project-navigation">
+          <div class="project-tabs" id="projectTabs" role="tablist" aria-label="Choose a project" aria-orientation="vertical"></div>
+        </div>
+        <article class="project-panel" id="projectPanel" role="tabpanel" tabindex="0" aria-live="polite" aria-labelledby="project-tab-0">
+          <div class="project-preview" aria-hidden="true">
+            <span class="preview-index" id="previewIndex">01 / 05</span>
+            <span class="preview-wordmark" id="previewWordmark">VÉRON</span>
+            <span class="preview-caption" id="previewCaption">Fashion commerce</span>
+          </div>
+          <div class="project-detail">
+            <div class="project-detail-heading">
+              <div>
+                <p class="project-category" id="projectCategory">E-commerce</p>
+                <h3 id="projectTitle">VÉRON Fashion Store</h3>
+              </div>
+              <span class="project-count" id="projectCount">01 / 05</span>
+            </div>
+            <p class="project-description" id="projectDescription"></p>
+            <div class="project-technologies">
+              <span class="project-meta-label">Built with</span>
+              <span id="projectTechnologies"></span>
+            </div>
+            <div class="project-actions">
+              <a class="project-explore" id="projectExplore" href="https://veron-fashion.netlify.app/" target="_blank" rel="noopener noreferrer">Explore project <span aria-hidden="true">↗</span></a>
+              <a class="project-repository" id="projectRepository" href="https://github.com/Ashadansari/veron" target="_blank" rel="noopener noreferrer">GitHub repository <span aria-hidden="true">↗</span></a>
             </div>
           </div>
-        </div>
-        <!-- A clone for E-Commerce platform -->
-        <div class="project-card">
-          <div class="project-thumb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></div>
-          <div class="project-body">
-            <h3>E-Commerce Platform</h3>
-            <p>Full-stack online store with a product catalog, cart, payments and an admin dashboard.</p>
-            <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Stripe</span></div>
-            <div class="project-links">
-              <a href="https://github.com/Ashadansari/E-commerce-web" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="https://e-commerce-webap.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i>
-                Live Demo</a>
-            </div>
-          </div>
-        </div>
-        <!-- A clone for Restaurant webapp -->
-        <div class="project-card">
-          <div class="project-thumb"><i class="fa-solid fa-utensils" aria-hidden="true"></i></div>
-          <div class="project-body">
-            <h3>Restaurant Website</h3>
-            <p>Responsive restaurant website showcasing the food menu and team members.</p>
-            <div class="tags"><span class="tag">Socket.io</span><span class="tag">React</span><span
-                class="tag">Express</span><span class="tag">Redis</span></div>
-            <div class="project-links">
-              <a href="https://github.com/Ashadansari/Restaurant-website" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="https://restaurant-website-dud7mj7j4-ashadansaris-projects.vercel.app/" target="_blank" rel="noopener noreferrer"><i
-                  class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-            </div>
-          </div>
-        </div>
-        <!-- A clone for Task manager app -->
-        <div class="project-card">
-          <div class="project-thumb"><i class="fa-solid fa-list-check" aria-hidden="true"></i></div>
-          <div class="project-body">
-            <h3>Task Manager App</h3>
-            <p>Kanban-style productivity app with drag-and-drop, deadlines, collaboration and reminders.</p>
-            <div class="tags"><span class="tag">Vue.js</span><span class="tag">Firebase</span><span
-                class="tag">Pinia</span></div>
-            <div class="project-links">
-              <a href="https://github.com/Ashadansari/task-manager-app" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="https://task-managerap.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live
-                Demo</a>
-            </div>
-          </div>
-        </div>
-        <!-- A clone for Cyber web -->
-        <div class="project-card">
-          <div class="project-thumb"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
-          <div class="project-body">
-            <h3>CyberWeb</h3>
-            <p>Cyber-themed portfolio design built to showcase front-end skills.</p>
-            <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span
-                class="tag">CSS</span></div>
-            <div class="project-links">
-              <a href="https://github.com/Ashadansari/cyberWeb" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="https://cyber-web-amber.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live
-                Demo</a>
-            </div>
-          </div>
-        </div>
-
+        </article>
       </div>
     </div>
   </section>
