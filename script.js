@@ -14,6 +14,49 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-25% 0px -65% 0px' });
 sections.forEach((section) => sectionObserver.observe(section));
 
+// Toggle and remember the site's color theme.
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+function setTheme(theme) {
+    document.body.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#080808' : '#f5f5f0';
+    const switchTo = theme === 'dark' ? 'light' : 'dark';
+    themeToggle.setAttribute('aria-label', `Switch to ${switchTo} theme`);
+    themeToggle.setAttribute('title', `Switch to ${switchTo} theme`);
+    themeIcon.className = `fa-solid ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`;
+}
+
+try {
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') setTheme(savedTheme);
+} catch (error) {
+    // Keep the default dark theme if browser storage is unavailable.
+}
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    try {
+        localStorage.setItem('portfolio-theme', nextTheme);
+    } catch (error) {
+        // The theme still changes for the current page session.
+    }
+});
+
+// Brighten the dot pattern around a mouse or pen pointer.
+const hero = document.querySelector('.hero');
+hero.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    const bounds = hero.getBoundingClientRect();
+    hero.style.setProperty('--pointer-x', `${event.clientX - bounds.left}px`);
+    hero.style.setProperty('--pointer-y', `${event.clientY - bounds.top}px`);
+});
+hero.addEventListener('pointerleave', () => {
+    hero.style.setProperty('--pointer-x', '-500px');
+    hero.style.setProperty('--pointer-y', '-500px');
+});
+
 // Contact form -> opens the visitor's email app with everything pre-filled
 const MY_EMAIL = 'ashhadshamim2@gmail.com';
 
