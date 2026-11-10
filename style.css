@@ -239,7 +239,9 @@ section:not(.hero) { padding: 96px 0; border-top: 1px solid var(--line); }
 .skill-panel-heading h3 { margin: 0; color: var(--text); font-size: clamp(1.35rem, 2.6vw, 1.9rem); line-height: 1.2; letter-spacing: -.05em; }
 .skill-panel-list { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0 0; padding: 0; list-style: none; }
 .skill-panel-list li { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: .9rem; }
-.skill-panel-list li::before { width: 4px; height: 4px; flex: 0 0 4px; border-radius: 50%; background: var(--accent); content: ''; }
+.skill-panel-list li::before { display: none; }
+.skill-mark { width: 18px; height: 18px; flex: 0 0 18px; object-fit: contain; }
+.skill-symbol { display: inline-grid; place-items: center; color: var(--accent); font-size: .9rem; }
 
 .project-showcase { display: grid; grid-template-columns: minmax(270px, .82fr) minmax(0, 1.18fr); gap: clamp(38px, 7vw, 92px); align-items: start; }
 .project-tabs { display: grid; border-top: 1px solid var(--line); }

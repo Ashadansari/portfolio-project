@@ -91,6 +91,66 @@ const selectedSkills = document.getElementById('selectedSkills');
 const skillTabButtons = [];
 let skillSelectionVersion = 0;
 
+const skillBrandLogos = {
+    HTML5: 'html5',
+    CSS3: 'css3',
+    JavaScript: 'javascript',
+    React: 'react',
+    Python: 'python',
+    Django: 'django',
+    PostgreSQL: 'postgresql',
+    Git: 'git',
+    GitHub: 'github/f4f4f1',
+    Docker: 'docker',
+    'Packet Tracer': 'cisco',
+    Wireshark: 'wireshark',
+    Metasploit: 'metasploit/C8202B',
+    'Burp Suite': 'burpsuite/FF6633',
+    PortSwigger: 'portswigger/FF6633',
+    TryHackMe: 'tryhackme/00F4CB'
+};
+
+const skillSymbolClasses = {
+    SQL: 'fa-database',
+    'IPv4 Addressing': 'fa-globe',
+    Subnetting: 'fa-diagram-project',
+    CIDR: 'fa-diagram-project',
+    TCP: 'fa-arrow-right-arrow-left',
+    UDP: 'fa-bolt',
+    DNS: 'fa-globe',
+    DHCP: 'fa-server',
+    ARP: 'fa-route',
+    ICMP: 'fa-wave-square',
+    NAT: 'fa-shuffle',
+    LAN: 'fa-network-wired',
+    WAN: 'fa-globe',
+    WLAN: 'fa-wifi',
+    Ethernet: 'fa-ethernet'
+};
+
+function createSkillSymbol(skill) {
+    const logoPath = skillBrandLogos[skill];
+    if (logoPath) {
+        const image = document.createElement('img');
+        image.className = 'skill-mark skill-logo';
+        image.src = `https://cdn.simpleicons.org/${logoPath}`;
+        image.alt = '';
+        image.setAttribute('aria-hidden', 'true');
+        image.addEventListener('error', () => {
+            const fallback = document.createElement('i');
+            fallback.className = `skill-mark skill-symbol fa-solid ${skillSymbolClasses[skill] || 'fa-code'}`;
+            fallback.setAttribute('aria-hidden', 'true');
+            image.replaceWith(fallback);
+        }, { once: true });
+        return image;
+    }
+
+    const symbol = document.createElement('i');
+    symbol.className = `skill-mark skill-symbol fa-solid ${skillSymbolClasses[skill] || 'fa-code'}`;
+    symbol.setAttribute('aria-hidden', 'true');
+    return symbol;
+}
+
 expertise.forEach((category, index) => {
     const tab = document.createElement('button');
     const number = String(index + 1).padStart(2, '0');
@@ -153,7 +213,8 @@ function selectExpertise(index, moveFocus = false) {
             selectedSkills.setAttribute('aria-label', `${category.name} skills`);
             selectedSkills.replaceChildren(...category.skills.map((skill) => {
                 const item = document.createElement('li');
-                item.textContent = skill;
+                item.append(createSkillSymbol(skill));
+                item.append(document.createTextNode(skill));
                 return item;
             }));
             skillPanel.classList.remove('is-switching');
@@ -194,6 +255,16 @@ const projects = [
         technologies: ['Socket.io', 'React', 'Express', 'Redis'],
         repository: 'https://github.com/Ashadansari/Restaurant-website',
         live: 'https://restaurant-eb.netlify.app/'
+    },
+    {
+        name: 'CyberForge',
+        wordmark: 'CYBERFORGE',
+        image: 'assets/project-previews/cyberforge.webp',
+        category: 'Cybersecurity · Learning platform',
+        description: 'Hands-on cybersecurity learning with guided paths, labs and practical challenges.',
+        technologies: [],
+        repository: 'https://github.com/Ashadansari/CyberForge',
+        live: 'https://exploit-academy-net.lovable.app/'
     },
     {
         name: 'Task Manager App',
@@ -300,9 +371,17 @@ function selectProject(index, moveFocus = false) {
         previewIndex.textContent = `${number} / ${total}`;
         previewWordmark.textContent = project.wordmark;
         previewCaption.textContent = project.category;
-        previewImage.src = project.image;
+        if (project.image) {
+            previewImage.src = project.image;
+            previewImage.hidden = false;
+        } else {
+            previewImage.removeAttribute('src');
+            previewImage.hidden = true;
+        }
+        projectTechnologies.parentElement.hidden = project.technologies.length === 0;
         projectExplore.href = project.live;
         projectRepository.href = project.repository;
+        projectRepository.hidden = !project.repository;
         projectPanel.classList.remove('is-switching');
     });
 }
