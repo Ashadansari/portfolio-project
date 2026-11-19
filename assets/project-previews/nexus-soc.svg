@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 730" fill="none">
+  <defs>
+    <radialGradient id="night" cx="0" cy="0" r="1" gradientTransform="matrix(830 410 -680 1375 604 188)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#241936"/>
+      <stop offset=".42" stop-color="#100c19"/>
+      <stop offset="1" stop-color="#07060b"/>
+    </radialGradient>
+    <linearGradient id="shield" x1="452" x2="759" y1="139" y2="554" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDE6FF" stop-opacity=".92"/>
+      <stop offset=".18" stop-color="#A994E4" stop-opacity=".68"/>
+      <stop offset=".43" stop-color="#292137" stop-opacity=".96"/>
+      <stop offset=".7" stop-color="#7C64B5" stop-opacity=".83"/>
+      <stop offset="1" stop-color="#17121F"/>
+    </linearGradient>
+    <radialGradient id="core" cx="0" cy="0" r="1" gradientTransform="matrix(193 0 0 193 601 351)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8C8FF" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#A98BFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="signal" x1="232" x2="1017" y1="172" y2="552" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9578DD" stop-opacity=".04"/>
+      <stop offset=".5" stop-color="#C1A8FF" stop-opacity=".76"/>
+      <stop offset="1" stop-color="#9578DD" stop-opacity=".04"/>
+    </linearGradient>
+    <pattern id="mesh" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path stroke="#C7B5F2" stroke-opacity=".085" d="M50 0H0v50"/>
+      <circle cx="1" cy="1" r="1" fill="#D7CAFF" fill-opacity=".28"/>
+    </pattern>
+    <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="32"/>
+    </filter>
+    <filter id="fine-glow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <path fill="url(#night)" d="M0 0h1200v730H0z"/>
+  <path fill="url(#mesh)" d="M0 0h1200v730H0z"/>
+  <ellipse cx="600" cy="363" fill="#8F69E2" fill-opacity=".2" rx="290" ry="200" filter="url(#soft-glow)"/>
+
+  <!-- Telemetry paths converge on a central defensive signal. -->
+  <g stroke="url(#signal)" stroke-width="1.4">
+    <path d="M38 172h219l120 96h132m653-95H960l-115 95H716"/>
+    <path d="M0 297h230l104 65h112m754-66H968l-105 66H754"/>
+    <path d="M45 464h220l113-93h115m707 91H967l-114-92H757"/>
+    <path d="M95 584h192l98-93h132m578 91H912l-99-92H683"/>
+    <path d="M178 86v99l98 78v83m649-260v100l-99 78v83"/>
+    <path d="M288 645v-91l89-76v-74m438 242v-92l-87-76v-74"/>
+  </g>
+  <g fill="#D5C6FF">
+    <circle cx="257" cy="172" r="3"/><circle cx="378" cy="268" r="3"/>
+    <circle cx="230" cy="297" r="3"/><circle cx="334" cy="362" r="3"/>
+    <circle cx="265" cy="464" r="3"/><circle cx="378" cy="371" r="3"/>
+    <circle cx="287" cy="584" r="3"/><circle cx="385" cy="491" r="3"/>
+    <circle cx="960" cy="172" r="3"/><circle cx="845" cy="268" r="3"/>
+    <circle cx="968" cy="296" r="3"/><circle cx="863" cy="363" r="3"/>
+    <circle cx="967" cy="462" r="3"/><circle cx="853" cy="370" r="3"/>
+    <circle cx="912" cy="582" r="3"/><circle cx="813" cy="490" r="3"/>
+  </g>
+  <g fill="#C6ADFF" filter="url(#fine-glow)" opacity=".6">
+    <circle cx="378" cy="268" r="5"/><circle cx="334" cy="362" r="5"/><circle cx="378" cy="371" r="5"/>
+    <circle cx="845" cy="268" r="5"/><circle cx="863" cy="363" r="5"/><circle cx="853" cy="370" r="5"/>
+  </g>
+
+  <!-- Abstract shield mark: illustrative artwork, not a product interface. -->
+  <circle cx="600" cy="353" r="206" stroke="#C5B0FF" stroke-opacity=".1"/>
+  <circle cx="600" cy="353" r="171" stroke="#D6C9F7" stroke-opacity=".13" stroke-dasharray="2 12"/>
+  <circle cx="600" cy="353" r="138" fill="url(#core)"/>
+  <path d="M600 154 741 210v112c0 106-57 184-141 232-84-48-141-126-141-232V210l141-56Z" fill="url(#shield)" fill-opacity=".62" stroke="#E4D9FF" stroke-opacity=".72" stroke-width="2"/>
+  <path d="M600 188 711 232v91c0 83-43 147-111 189-68-42-111-106-111-189v-91l111-44Z" stroke="#F1ECFF" stroke-opacity=".42"/>
+  <path d="M600 258v193" stroke="#E6DAFF" stroke-opacity=".38"/>
+  <path d="M535 352L578 395L670 292" stroke="#F0E9FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+  <circle cx="600" cy="353" r="94" stroke="#C4ABFF" stroke-opacity=".2"/>
+  <circle cx="600" cy="353" r="12" fill="#EAE2FF"/>
+  <circle cx="600" cy="353" r="25" stroke="#D2C0FF" stroke-opacity=".45"/>
+
+  <path d="M0 663c213-69 397-68 600 0s387 70 600 0" stroke="#B99DFF" stroke-opacity=".18"/>
+  <path d="M0 684c213-69 397-68 600 0s387 70 600 0" stroke="#B99DFF" stroke-opacity=".1"/>
+</svg>

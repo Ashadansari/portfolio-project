@@ -37,7 +37,7 @@ const themeIcon = themeToggle.querySelector('i');
 
 function setTheme(theme) {
     document.body.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#080808' : '#f5f5f0';
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#05040a' : '#f5f3fa';
     const switchTo = theme === 'dark' ? 'light' : 'dark';
     themeToggle.setAttribute('aria-label', `Switch to ${switchTo} theme`);
     themeToggle.setAttribute('title', `Switch to ${switchTo} theme`);
@@ -74,19 +74,36 @@ hero.addEventListener('pointerleave', () => {
     hero.style.setProperty('--pointer-y', '-500px');
 });
 
+// Reveal sections as they enter view while keeping content visible without JavaScript.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('section:not(.hero) .section-label, section:not(.hero) .section-intro, .about-grid, .skills-browser, .project-showcase, .experience-layout, .contact-grid').forEach((element) => {
+        element.classList.add('reveal-on-scroll');
+        revealObserver.observe(element);
+    });
+}
+
 // Data and tab behavior for the Skills section.
 const expertise = [
-    { name: 'Frontend Development', skills: ['HTML5', 'CSS3', 'JavaScript', 'React'] },
-    { name: 'Backend Development', skills: ['Python', 'Django', 'SQL', 'PostgreSQL'] },
-    { name: 'Development Tools', skills: ['Git', 'GitHub', 'Docker', 'Packet Tracer'] },
-    { name: 'Networking', skills: ['IPv4 Addressing', 'Subnetting', 'CIDR', 'TCP', 'UDP', 'DNS', 'DHCP', 'ARP', 'ICMP', 'NAT', 'LAN', 'WAN', 'WLAN', 'Ethernet'] },
-    { name: 'Cybersecurity', skills: ['Wireshark', 'Metasploit', 'Burp Suite', 'PortSwigger', 'TryHackMe'] }
+    { name: 'Frontend Development', description: 'Interfaces built with clarity, responsive behavior and a focus on usability.', skills: ['HTML5', 'CSS3', 'JavaScript', 'React'] },
+    { name: 'Backend Development', description: 'Python and database fundamentals for practical application development.', skills: ['Python', 'Django', 'SQL', 'PostgreSQL'] },
+    { name: 'Development Tools', description: 'Everyday tools for collaboration, containerized workflows and network simulation.', skills: ['Git', 'GitHub', 'Docker', 'Packet Tracer'] },
+    { name: 'Networking', description: 'Core addressing, transport and infrastructure concepts, developed through hands-on simulation.', skills: ['IPv4 Addressing', 'Subnetting', 'CIDR', 'TCP', 'UDP', 'DNS', 'DHCP', 'ARP', 'ICMP', 'NAT', 'LAN', 'WAN', 'WLAN', 'Ethernet'] },
+    { name: 'Cybersecurity', description: 'Security learning through authorized labs, packet analysis and guided practice.', skills: ['Wireshark', 'Metasploit', 'Burp Suite', 'PortSwigger', 'TryHackMe'] }
 ];
 
 const skillTabs = document.getElementById('skillTabs');
 const skillPanel = document.getElementById('skillPanel');
 const skillPanelIndex = document.getElementById('skillPanelIndex');
 const skillPanelTitle = document.getElementById('skillPanelTitle');
+const skillPanelDescription = document.getElementById('skillPanelDescription');
 const selectedSkills = document.getElementById('selectedSkills');
 const skillTabButtons = [];
 let skillSelectionVersion = 0;
@@ -210,6 +227,7 @@ function selectExpertise(index, moveFocus = false) {
             if (selectionVersion !== skillSelectionVersion) return;
             skillPanelIndex.textContent = `${number} / ${total}`;
             skillPanelTitle.textContent = category.name;
+            skillPanelDescription.textContent = category.description;
             selectedSkills.setAttribute('aria-label', `${category.name} skills`);
             selectedSkills.replaceChildren(...category.skills.map((skill) => {
                 const item = document.createElement('li');
@@ -226,6 +244,17 @@ selectExpertise(0);
 
 // Data for the Projects showcase.
 const projects = [
+    {
+        name: 'NEXUS-SOC',
+        wordmark: 'NEXUS-SOC',
+        image: 'assets/project-previews/nexus-soc.svg',
+        category: 'Security operations · Threat intelligence',
+        status: 'IN DEVELOPMENT',
+        description: 'Intelligence. Visibility. Defense. NEXUS-SOC is an AI-powered Security Operations and Threat Intelligence platform in development, designed around security monitoring, telemetry visibility, threat detection, incident management and analyst-focused security intelligence.',
+        technologies: [],
+        repository: null,
+        live: null
+    },
     {
         name: 'VÉRON Fashion Store',
         wordmark: 'VÉRON',
@@ -301,6 +330,7 @@ const previewIndex = document.getElementById('previewIndex');
 const previewWordmark = document.getElementById('previewWordmark');
 const previewCaption = document.getElementById('previewCaption');
 const previewImage = document.getElementById('previewImage');
+const previewStatus = document.getElementById('previewStatus');
 const projectTabButtons = [];
 
 projects.forEach((project, index) => {
@@ -361,6 +391,7 @@ function selectProject(index, moveFocus = false) {
     if (moveFocus) projectTabButtons[index].focus();
 
     projectPanel.setAttribute('aria-labelledby', `project-tab-${index}`);
+    projectPanel.dataset.projectStatus = project.status ? 'development' : 'established';
     projectPanel.classList.add('is-switching');
     window.requestAnimationFrame(() => {
         projectTitle.textContent = project.name;
@@ -371,6 +402,8 @@ function selectProject(index, moveFocus = false) {
         previewIndex.textContent = `${number} / ${total}`;
         previewWordmark.textContent = project.wordmark;
         previewCaption.textContent = project.category;
+        previewStatus.textContent = project.status || '';
+        previewStatus.hidden = !project.status;
         if (project.image) {
             previewImage.src = project.image;
             previewImage.hidden = false;
@@ -379,8 +412,9 @@ function selectProject(index, moveFocus = false) {
             previewImage.hidden = true;
         }
         projectTechnologies.parentElement.hidden = project.technologies.length === 0;
-        projectExplore.href = project.live;
-        projectRepository.href = project.repository;
+        if (project.live) projectExplore.href = project.live;
+        projectExplore.hidden = !project.live;
+        if (project.repository) projectRepository.href = project.repository;
         projectRepository.hidden = !project.repository;
         projectPanel.classList.remove('is-switching');
     });
