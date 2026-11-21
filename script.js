@@ -250,7 +250,7 @@ const projects = [
         image: 'assets/project-previews/nexus-soc.svg',
         category: 'Security operations · Threat intelligence',
         status: 'IN DEVELOPMENT',
-        description: 'Intelligence. Visibility. Defense. NEXUS-SOC is an AI-powered Security Operations and Threat Intelligence platform in development, designed around security monitoring, telemetry visibility, threat detection, incident management and analyst-focused security intelligence.',
+        description: 'Intelligence. Visibility. Defense. NEXUS-SOC is an AI-powered Security Operations and Threat Intelligence platform in development, with an estimated 11-month development timeline. It is designed around security monitoring, telemetry visibility, threat detection, incident management and analyst-focused security intelligence.',
         technologies: [],
         repository: null,
         live: null
